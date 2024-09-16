@@ -184,7 +184,7 @@ def quantize_and_save():
 
     # convert safetensor to bin
     tensors = {}
-    with safe_open(os.path.join(lora_model_dir, "adapter_model.safetensors"), framework="pt") as f:
+    with save_open(os.path.join(lora_model_dir, "adapter_model.safetensors"), framework="pt") as f:
         for k in f.keys():
             tensors[k] = f.get_tensor(k)
     torch.save(tensors, os.path.join(lora_model_dir, "adapter_model.bin"))
